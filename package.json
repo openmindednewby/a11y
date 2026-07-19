@@ -1,6 +1,6 @@
 {
   "name": "@dloizides/a11y",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The accessibility platform seam for the dloizides.com RN-web UI kit. One authored contract (label/hint/role/state/testID) emitted as platform-correct props: React Native accessibility* on native, real ARIA on web - including the hint, which react-native-web otherwise drops silently because accessibilityHint has no ARIA equivalent. Ships a dual-platform Jest gate that asserts the emitted output under BOTH renderers.",
   "keywords": [
     "accessibility",
