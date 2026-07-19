@@ -4,7 +4,14 @@ All notable changes to `@dloizides/a11y` are documented here.
 
 ## 1.0.0
 
-Initial release — the accessibility platform seam for the dloizides.com RN-web UI kit.
+Initial supported release — the accessibility platform seam for the dloizides.com RN-web
+UI kit. **Consume this, not 0.10.0.**
+
+> `0.10.0` was published first by a mis-aimed bump (`-Bump minor` from the 0.9.0 seed
+> version yields 0.10.0, not 1.0.0). It is byte-identical in behaviour to 1.0.0 but a
+> `0.x` range signals "unstable" to every consumer, which this is not. Left on the
+> registry rather than unpublished — deleting versions breaks lockfiles — but nothing
+> should depend on it.
 
 ### Added
 
