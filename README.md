@@ -81,6 +81,23 @@ a dangling reference to a node that outlived its owner is not possible. It is hi
 or `opacity:0`, all of which risk removing it from the accessibility tree and silently
 undoing the entire fix.
 
+### Known trade-off: the host's raw `textContent` now includes the hint
+
+The hidden node is a descendant, so `host.textContent` returns the label **and** the hint.
+This is deliberate and the alternatives are worse (a sibling node needs a wrapper element,
+which changes flex layout; a detached node can outlive its owner).
+
+What it does **not** change is the accessible **name**: `aria-label` takes precedence over
+content per the ARIA spec, so `getByRole('button', { name })` — which is how every
+Playwright locator in the fleet targets buttons — is unaffected. There is a test pinning
+exactly this, because the precedence going missing would be a silent E2E-wide breakage.
+
+The residual exposure is any assertion reading **raw** `textContent` off a control that
+renders a hint. At the time of writing no E2E page object does this on a kit `Button` (the
+20 `toHaveText`/`textContent` call sites all target badges, errors, titles and status
+labels). Prefer `getByRole(..., { name })` over text-content matching on interactive
+elements.
+
 ### Why it can't be forgotten quietly
 
 Three layers, earliest-catching first:

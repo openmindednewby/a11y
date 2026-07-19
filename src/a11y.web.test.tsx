@@ -111,6 +111,24 @@ describe('web platform', () => {
     expect(a).toMatch(/^[a-zA-Z0-9_-]+$/);
   });
 
+  it('does NOT let the hint leak into the accessible NAME', () => {
+    // The hidden node lives INSIDE the host, so the host's raw `textContent` now
+    // includes the hint. That is a real, visible consequence of this design, and the
+    // thing it must never do is change the accessible NAME — every Playwright locator
+    // in the fleet is `getByRole('button', { name })`, which resolves the name, and
+    // `aria-label` takes precedence over content per the ARIA spec. Pinned here so the
+    // precedence can never be quietly lost (e.g. by dropping aria-label for a
+    // content-derived name).
+    const { getByTestId, getByRole } = render(
+      <HintedBox label="Save" hint={HINT} role="button" testID="save" />,
+    );
+
+    expect(getByRole('button', { name: 'Save' })).toBe(getByTestId('save'));
+    expect(getByTestId('save')).toHaveAttribute('aria-label', 'Save');
+    // The hint IS in the raw text content — documenting the trade-off explicitly.
+    expect(getByTestId('save').textContent).toContain(HINT);
+  });
+
   it('shouts in dev when the caller spreads the props but drops the hidden node', () => {
     const spy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
 

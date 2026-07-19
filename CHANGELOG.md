@@ -2,6 +2,18 @@
 
 All notable changes to `@dloizides/a11y` are documented here.
 
+## 1.0.1
+
+Docs + one new test. No runtime change.
+
+- Pins that the hint **never leaks into the accessible NAME**. The hidden node is a
+  descendant of the host, so `textContent` includes the hint — but `aria-label` takes
+  precedence over content per the ARIA spec, which is what keeps every
+  `getByRole('button', { name })` locator in the fleet working. That precedence silently
+  disappearing would be an E2E-wide breakage, so it is now asserted rather than assumed.
+- Documents the trade-off and the residual exposure (raw `textContent` assertions on
+  interactive elements) in the README.
+
 ## 1.0.0
 
 Initial supported release — the accessibility platform seam for the dloizides.com RN-web
