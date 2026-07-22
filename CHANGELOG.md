@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.3.0
+
+**One touch-target floor for the whole kit.**
+
+The kit had no shared definition of the minimum interactive size, so each package
+re-decided it independently — and the Digital Kin CMS shipped **22 of 22 buttons and
+10 of 10 inputs below the standard**, with text inputs **19px tall**, while every
+package believed it was doing the right thing.
+
+This exports the floor and a helper so `ui-buttons`, `ui-forms` and `ui-layout`
+enforce one number instead of three opinions. **Publish this first** — the other
+three declare `^1.3.0`.
+
+
 All notable changes to `@dloizides/a11y` are documented here.
 
 ## 1.0.1
