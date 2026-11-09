@@ -16,6 +16,7 @@ export { A11yHint } from './A11yHint';
 export type { A11yHintProps } from './A11yHint';
 export { toAriaRole } from './roleMap';
 export { MIN_TOUCH_TARGET_PX, MIN_TOUCH_TARGET_AA_PX, meetsTouchTarget } from './touchTarget';
+export { rovingArrowTarget, rovingTabIndexes } from './rovingFocus';
 export type {
   A11yContract,
   A11yProps,
