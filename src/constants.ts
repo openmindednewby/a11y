@@ -7,7 +7,7 @@
  * or `display: none` (both risk removing the node from the accessibility tree, which
  * would silently un-do the entire point of this package).
  */
-export const HIDDEN_NODE_SIZE = 1;
+export const HIDDEN_NODE_SIZE = 0;
 
 /** Prefix for generated description-node ids. */
 export const HINT_ID_PREFIX = 'a11y-hint';
