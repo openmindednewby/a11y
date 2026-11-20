@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.0
+
+`rovingArrowTarget` takes an optional `RovingAxis` (default `Horizontal`, unchanged). `RovingAxis.Both` also walks focus with ArrowUp/ArrowDown, for a vertical list or a wrapping grid of cards (INV-EXTRACT-1 W12, from invoice-web's template card walk).
+
 ## 1.3.1
 
 **One touch-target floor for the whole kit.**
